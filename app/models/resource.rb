@@ -3,6 +3,7 @@ class Resource < ActiveRecord::Base
   belongs_to :budget
   belongs_to :nature
   has_many :efforts
+  has_many :transfers
   
   
   def total_efforts

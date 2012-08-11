@@ -13,6 +13,10 @@
 	
 	<div class="row-fluid">
 		<div class="span10">
-			repasses
+			<div id="transfers">
+				<% resource.transfers.each do |transfer| %>
+					<%=render(:partial => 'transfers/item_transfer', :locals => {:transfer => transfer} )%>
+				<%end%>
+			</div>
 		</div>
 	</div>

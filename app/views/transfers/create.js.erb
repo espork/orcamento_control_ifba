@@ -1,0 +1,13 @@
+<% if @transfer.errors.any? %>
+	<%= render :partial => 'form' %>
+<% else %>
+	$('#divNovoSubRepasse').modal('hide');
+	$('#divNovoSubRepasse').empty();
+	
+	$('#transfers').append("<%= escape_javascript(render(:partial => 'item_transfer', :locals => {:transfer => @transfer} )) %>");
+	$('resource_balance_<%=@transfer.resource.id%>').html("<%=balance(@transfer.resource.balance)%>");
+	$('html, body').animate({
+    	scrollTop: $("#transfer_<%=@transfer.id%>").offset().top
+	}, 2000);
+	
+<% end %>

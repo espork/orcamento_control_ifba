@@ -64,11 +64,14 @@ ActiveRecord::Schema.define(:version => 20120811034000) do
   end
 
   create_table "transfers", :force => true do |t|
-    t.integer  "nature_id"
-    t.decimal  "value",      :precision => 10, :scale => 0
+    t.string   "identification"
+    t.integer  "resource_id"
+    t.decimal  "value",          :precision => 14, :scale => 2
     t.integer  "unit_id"
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.date     "date"
+    t.string   "obs"
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
   end
 
   create_table "units", :force => true do |t|
