@@ -1,0 +1,12 @@
+<% if @effort.errors.any? %>
+	<%= render :partial => 'form' %>
+<% else %>
+	$('#divNovoEmpenho').modal('hide');
+	$('#divNovoEmpenho').empty();
+	$('#efforts').append("<%= escape_javascript(render(:partial => 'item_effort', :locals => {:effort => @effort} )) %>");
+	$('resource_balance_<%=@effort.resource.id%>').html("<%=balance(@effort.resource.balance)%>");
+	$('html, body').animate({
+    	scrollTop: $("#effort_<%=@effort.id%>").offset().top
+	}, 2000);
+	
+<% end %>

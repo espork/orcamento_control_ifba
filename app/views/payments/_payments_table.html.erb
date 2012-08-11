@@ -1,0 +1,31 @@
+<table class="table table-striped" >
+	<tr>
+		<th>Nº pagamento</th>
+		<th>Data</th>
+		<th>Valor</th>
+		<th>Opções</th>
+	</tr>
+
+	<% payments.each do |p| %>
+		<tr>
+			<td><%= p.identification %></td>
+			<td><%= p.date.strftime("%d/%m/%Y")%></td>
+			<td><%= real_format(p.value)%></td>
+			<td>
+				<ul>
+					<li class="icon-edit" title="Editar">
+						<%=link_to content_tag(:i,nil,:class=>"icon-edit"),edit_resource_effort_payment_path(effort.resource,effort,p),:remote=>true%>
+					</li>
+					<li class="icon-remove" title="Editar">
+						<%=link_to content_tag(:i,nil,:class=>"icon-remove"),resource_effort_payment_path(effort.resource,effort,p),:remote=>true,:method=> :delete,:confirm => 'Tem certeza que deseja remover o pagamento selecionado ?'%>
+					</li>
+				</ul>
+			</td>
+		</tr>
+	<% end %>
+	<tr>
+		<td colspan="2"><strong>Total</strong></td>
+		<td><%=real_format(effort.total_payments)%></td>
+		<td></td>
+	</tr>
+</table>

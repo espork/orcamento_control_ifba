@@ -1,0 +1,63 @@
+<%=  javascript_tag  do%>
+	
+jQuery(function($) {
+	
+    $('#effort_date').datepicker({
+      yearRange     : 'c-0:c+10',
+      showButtonPanel  : false,
+      numberOfMonths  : 1,
+      stepMonths    : 1,
+	  dateFormat : 'dd/mm/yy',
+      hideIfNoPrevNext: true
+    });
+});
+	
+	
+<%end%>
+
+<div class="modal-header">	
+	<button data-dismiss="modal" class="close" type="button">×</button>
+	<h3>Novo Empenho</h3>
+</div>
+
+<%= form_for([@resource,@effort],:remote => true,:html =>{:class => "form-horizontal", :style => "margin:0"}) do |f| %>
+<div class="modal-body">
+	
+	<div class="control-group">
+		<%= f.label :identification,"Número",:class=> "control-label" %>
+		<div class="controls">
+			<%= f.text_field :identification%>
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<%= f.label :date,"Data",:class=> "control-label" %>
+		<div class="controls">
+			<%= f.text_field :date,:class=> "input-small"%>
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<%= f.label :value,"valor",:class=> "control-label" %>
+		<div class="controls">
+			<%= f.text_field :value%>
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<%= f.label :obs, "Observação",:class=> "control-label" %>
+		<div class="controls">
+			<%= f.text_area :obs,:class => "input-xlarge",:rows =>3%>
+		</div>
+	</div>
+	
+</div>
+
+<div class="modal-footer">
+	<%= f.submit "Ok",:class => "btn btn-primary" %>
+	<a data-dismiss="modal" class="btn" href="#">Fechar</a>
+
+</div>		
+<% end %>
+	
+	

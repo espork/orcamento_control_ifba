@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  resource_id: 1
+  date: 2012-08-08
+  value: 9.99
+  obs: MyString
+
+two:
+  resource_id: 1
+  date: 2012-08-08
+  value: 9.99
+  obs: MyString

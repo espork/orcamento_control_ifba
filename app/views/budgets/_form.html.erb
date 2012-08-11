@@ -1,0 +1,102 @@
+<%=  javascript_tag  do%>
+	
+	jQuery(function($) {
+		
+	    $('#budget_start_date').datepicker({
+    		  yearRange     : 'c-0:c+10',
+      		  showButtonPanel  : false,
+      		  numberOfMonths  : 1,
+      		  stepMonths    : 1,
+	  		  dateFormat : 'dd/mm/yy',
+      		  hideIfNoPrevNext: true
+    	});
+	
+		$('#budget_end_date').datepicker({
+    		  yearRange     : 'c-0:c+10',
+      		  showButtonPanel  : false,
+      		  numberOfMonths  : 1,
+      		  stepMonths    : 1,
+	  		  dateFormat : 'dd/mm/yy',
+      		  hideIfNoPrevNext: true
+    	});
+	
+	
+});
+	
+	
+<%end%>
+
+
+<%= nested_form_for(@budget,:html =>{:class => "well form-horizontal"}) do |f| %>
+  <% if @budget.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@budget.errors.count, "error") %> prohibited this budget from being saved:</h2>
+
+      <ul>
+      <% @budget.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="control-group">
+    <%= f.label :nc_number,"Nº da NC", :class => "control-label" %>
+	<div class="controls">
+    	<%= f.text_field :nc_number,%>
+	</div>
+  </div>
+  
+  
+  <div class="control-group">
+    <%= f.label :start_date,"Data início", :class => "control-label" %>
+	<div class="controls">
+    	<%= f.text_field :start_date,:class=>"input-small"%>
+	</div>
+  </div>
+
+  
+  <div class="control-group">
+    <%= f.label :end_date,"Data fim", :class => "control-label" %>
+	<div class="controls">
+    	<%= f.text_field :end_date,:class=>"input-small"%>
+	</div>
+  </div>
+  
+  
+  <div class="control-group">
+			<%= f.link_to_add :resources, :class=>"btn btn-success" do %>
+				<i class="icon-plus"></i>
+				<span>Novo recurso</span>
+			<% end %>
+		</div>
+	
+		<%= f.fields_for :resources do |resources_form|%>
+		<%=  javascript_tag  do%>
+				
+		<%end%>
+		<div class    = "control-group">
+			<div class   = "controls">
+				<span class = "help-inline">
+					<%= resources_form.collection_select(:nature_id,Nature.order(:nd),:id, :nd, {:prompt => "Selecione uma natureza"}) %>
+				</span>
+				<span class = "help-inline">
+				<%= resources_form.text_field :value, :class => "value",:placeholder=>"Valor" %>
+				</span>
+				
+				<span class = "help-inline">
+					<%= resources_form.link_to_remove  do %>
+					<i class   = "icon-remove"></i> 
+					<% end %>
+				</span>
+			</div>
+		</div>
+		<% end %>
+  
+  
+  
+	  <div class="form-actions">
+	    <%= f.submit "Salvar Orçamento",:class => "btn btn-primary" %>
+		<%= link_to 'Cancelar', budgets_path,:class => "btn" %>
+	  </div>
+<% end %>

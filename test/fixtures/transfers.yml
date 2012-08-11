@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nature_id: 1
+  value: 9.99
+  unit_id: 1
+
+two:
+  nature_id: 1
+  value: 9.99
+  unit_id: 1

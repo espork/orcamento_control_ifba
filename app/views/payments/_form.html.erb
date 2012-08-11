@@ -1,0 +1,116 @@
+<%=  javascript_tag  do%>
+	
+jQuery(function($) {
+	
+    $('#payment_date').datepicker({
+      yearRange     : 'c-0:c+10',
+      showButtonPanel  : false,
+      numberOfMonths  : 1,
+      stepMonths    : 1,
+	  dateFormat : 'dd/mm/yy',
+      hideIfNoPrevNext: true
+    });
+	
+	$('#payment_nf_date').datepicker({
+      yearRange     : 'c-0:c+10',
+      showButtonPanel  : false,
+      numberOfMonths  : 1,
+      stepMonths    : 1,
+	  dateFormat : 'dd/mm/yy',
+      hideIfNoPrevNext: true
+    });
+});
+	
+	
+<%end%>
+
+<div class="modal-header">	
+	<button data-dismiss="modal" class="close" type="button">×</button>
+	<h3>Pagamento</h3>
+</div>
+
+<%= form_for([@effort.resource,@effort,@payment],:remote => true,:html =>{:class => "form-horizontal", :style => "margin:0"}) do |f| %>
+<div class="modal-body">
+	
+	
+	<% if @payment.errors.any? %>
+		teste
+			<div class="alert alert-error">
+				<a class="close" data-dismiss="alert" href="#">×</a>
+				<ul>
+					<% @payment.errors.full_messages.each do |msg| %>
+						<li><%=msg%></li>
+					<% end %>
+				</ul>
+			</div>
+			
+		<% end %>
+		
+		
+		<div class="control-group">
+			<%= f.label :effort_id, "Empenho",:class=> "control-label" %>
+			<div class="controls">
+				<span class="input uneditable-input span4"><%=@effort.identification%></span>
+			</div>
+		</div>
+	
+	
+	
+	
+	<div class="control-group">
+		<%= f.label :identification,"Número",:class=> "control-label" %>
+		<div class="controls">
+			<%= f.text_field :identification%>
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<%= f.label :date,"Data",:class=> "control-label" %>
+		<div class="controls">
+			<%= f.text_field :date,:class=> "input-small"%>
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<%= f.label :value,"valor",:class=> "control-label" %>
+		<div class="controls">
+			<%= f.text_field :value%>
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<%= f.label :nf_number,"Número da nota fiscal",:class=> "control-label" %>
+		<div class="controls">
+			<%= f.text_field :nf_number%>
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<%= f.label :nf_date,"Data da nota fiscal",:class=> "control-label" %>
+		<div class="controls">
+			<%= f.text_field :nf_date,:class=> "input-small"%>
+		</div>
+	</div>
+	<div class="control-group">
+		<%= f.label :favored,"Favorecido",:class=> "control-label" %>
+		<div class="controls">
+			<%= f.text_field :favored%>
+		</div>
+	</div>
+	<div class="control-group">
+		<%= f.label :identify,"cpf/cnpj",:class=> "control-label" %>
+		<div class="controls">
+			<%= f.text_field :identify%>
+		</div>
+	</div>
+	
+</div>
+
+<div class="modal-footer">
+	<%= f.submit "Ok",:class => "btn btn-primary" %>
+	<a data-dismiss="modal" class="btn" href="#">Fechar</a>
+
+</div>		
+<% end %>
+	
+	

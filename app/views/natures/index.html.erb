@@ -1,0 +1,57 @@
+<h3>Naturezas</h3>
+<br/>
+
+<div class="span11">
+	
+	<%= link_to new_nature_path, :title => "Nova Natureza",:class => "btn" do %>
+			<i class="icon-plus"></i>&nbspNova Natureza
+	<% end %>
+			
+</div>
+
+<br/>
+<br/>
+
+
+<div class="span11">
+<table class="table table-striped" >
+  <tr>
+  	<th>Nd</th>
+    <th>Ev</th>
+    <th>Esf</th>
+    <th>Ptres</th>
+    <th>Fonte</th>
+    <th>Pi</th>
+    <th>Opções</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @natures.each do |nature| %>
+  <tr>
+  	<td><%= nature.nd %></td>
+    <td><%= nature.ev %></td>
+    <td><%= nature.esf %></td>
+    <td><%= nature.ptres %></td>
+    <td><%= nature.fonte %></td>
+    <td><%= nature.pi %></td>
+    <td>
+		<ul>
+			
+			<li class="icon-edit" title="Editar">
+				<%=link_to content_tag(:i,nil,:class=>"icon-edit"),edit_nature_path(nature)%>
+			</li>
+			
+			<li class="icon-remove" title="Excluir">
+				<%=link_to content_tag(:i,nil,:class=>"icon-remove"),nature, method: :delete, data: { confirm: 'Tem certeza que deseja excluir a natureza selecionada?' }%>
+			</li>
+		</ul>
+	</td>
+	
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+</div>

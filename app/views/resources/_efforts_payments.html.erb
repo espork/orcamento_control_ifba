@@ -1,0 +1,25 @@
+	<div class="row-fluid">
+		<div class="span10">
+			
+			<%= link_to new_resource_effort_path(resource), :title => "Novo Empenho",:class => "btn",:remote => true do %>
+					<i class="icon-plus"></i>&nbspNovo Empenho
+			<% end %>
+					
+		</div>
+	</div>
+	<br/>
+	<br/>
+	<div id='divNovoEmpenho' class="modal hide fade in"></div>
+	
+	
+	<div id='divNovoPagamento' class="modal hide fade in"></div>
+	
+	<div class="row-fluid">
+		<div class="span10">
+			<div id="efforts">
+				<% resource.efforts.each do |effort| %>
+					<%=render(:partial => 'efforts/item_effort', :locals => {:effort => effort} )%>
+				<%end%>
+			</div>
+		</div>
+	</div>

@@ -1,0 +1,62 @@
+<%= form_for(@nature,:html =>{:class => "well form-horizontal"}) do |f| %>
+  <% if @nature.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@nature.errors.count, "error") %> prohibited this nature from being saved:</h2>
+
+      <ul>
+      <% @nature.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  
+  <div class="control-group">
+    <%= f.label :ev,"Ev", :class => "control-label" %>
+	<div class="controls">
+    	<%= f.text_field :ev,:class=>"input-small" %>
+	</div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :esf,"Esf", :class => "control-label" %>
+	<div class="controls">
+    	<%= f.text_field :esf,:class=>"input-small" %>
+	</div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :ptres,"Ptres", :class => "control-label" %>
+	<div class="controls">
+    	<%= f.text_field :ptres,:class=>"input-small" %>
+	</div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :nd,"Nd", :class => "control-label" %>
+	<div class="controls">
+    	<%= f.text_field :nd,:class=>"input-small" %>
+	</div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :pi,"Pi", :class => "control-label" %>
+	<div class="controls">
+    	<%= f.text_field :pi%>
+	</div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :fonte,"Fonte", :class => "control-label" %>
+	<div class="controls">
+    	<%= f.text_field :fonte%>
+	</div>
+  </div>
+  
+  <div class="form-actions">
+    <%= f.submit "Salvar Natureza",:class => "btn btn-primary" %>
+	<%= link_to 'Cancelar', natures_path,:class => "btn" %>
+  </div>
+  
+<% end %>

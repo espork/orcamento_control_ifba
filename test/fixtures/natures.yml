@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ev: MyString
+  esf: MyString
+  ptres: MyString
+  fonte: MyString
+  nd: MyString
+  pi: MyString
+
+two:
+  ev: MyString
+  esf: MyString
+  ptres: MyString
+  fonte: MyString
+  nd: MyString
+  pi: MyString

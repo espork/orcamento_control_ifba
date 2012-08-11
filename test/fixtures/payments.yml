@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  effort_id: 1
+  date: 2012-08-08
+  nf_date: 2012-08-08
+  nf_number: MyString
+  value: 9.99
+  favored: MyString
+  identify: MyString
+
+two:
+  effort_id: 1
+  date: 2012-08-08
+  nf_date: 2012-08-08
+  nf_number: MyString
+  value: 9.99
+  favored: MyString
+  identify: MyString

@@ -1,0 +1,46 @@
+<h3>Lista de Unidades</h3>
+<br/>
+
+<div class="span11">
+	
+	<%= link_to new_unit_path, :title => "Novo Campus",:class => "btn" do %>
+			<i class="icon-plus"></i>&nbspNovo Campus
+	<% end %>
+			
+</div>
+
+<br/>
+<br/>
+
+<div class="span11">
+<table class="table table-striped" >
+  <tr>
+    <th>Código</th>
+    <th>Nome</th>
+    <th>Opções</th>
+    
+  </tr>
+
+<% @units.each do |unit| %>
+  <tr>
+    <td><%= unit.code %></td>
+    <td><%= unit.name %></td>
+	<td>
+		<ul>
+			
+			<li class="icon-edit" title="Editar">
+				<%=link_to content_tag(:i,nil,:class=>"icon-edit"),edit_unit_path(unit)%>
+			</li>
+			
+			<li class="icon-remove" title="Excluir">
+				<%=link_to content_tag(:i,nil,:class=>"icon-remove"),unit, method: :delete, data: { confirm: 'Tem certeza que deseja excluir o campus selecionado?' }%>
+			</li>
+		</ul>
+	</td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+</div>

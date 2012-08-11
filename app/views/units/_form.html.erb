@@ -1,0 +1,35 @@
+<%= form_for(@unit,:html =>{:class => "well form-horizontal"}) do |f| %>
+
+	<% if @unit.errors.any? %>
+		<div class="alert alert-error">
+			<a class="close" data-dismiss="alert" href="#">×</a>
+			<ul>
+				<% @unit.errors.full_messages.each do |msg| %>
+					<li><%=msg%></li>
+				<% end %>
+			</ul>
+		</div>  
+	<% end %>
+  
+  
+  <div class="control-group">
+    <%= f.label :code,"Código", :class => "control-label" %>
+	<div class="controls">
+    	<%= f.text_field :code,:class=>"input-small" %>
+	</div>
+  </div>
+  
+
+  <div class="control-group">
+    <%= f.label :name,"Nome", :class => "control-label" %>
+	<div class="controls">
+		<%= f.text_field :name %>
+	</div>
+  </div>
+  
+  <div class="form-actions">
+  	
+    <%= f.submit "Salvar Campus",:class => "btn btn-primary" %>
+	<%= link_to 'Cancelar', units_path,:class => "btn" %>
+  </div>
+<% end %>
