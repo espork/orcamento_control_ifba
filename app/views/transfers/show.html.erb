@@ -1,0 +1,46 @@
+<%=  javascript_tag  do%>
+
+	function showPayment(url){
+	
+		$('#divNovoPagamento').empty();
+		$("#divNovoPagamento").load(url);
+		$("#divNovoPagamento").modal();
+	}
+
+<%end%>
+
+<div class="row-fluid">
+	<div class="span10">
+		<h3>Orçamento <%=@transfer.resource.budget.start_date.strftime("%d/%m/%Y")%> - <%=@transfer.resource.budget.end_date.strftime("%d/%m/%Y")%></h3>
+	</div>
+</div>
+<br/>
+<br/>
+<div class="row-fluid">
+	<div class="span10">
+		<ul class="unstyled">
+			<li><strong>Campus : </strong><%=@transfer.unit.name%></li>
+			<li><strong>NC : </strong><%=@transfer.identification%></li>
+			<li><strong>Natureza : </strong><%=@transfer.resource.nature.nd%></li>
+			<li><strong>Valor : </strong><%=real_format(@transfer.value)%></li>
+			<li id="transfer_balance_<%=@transfer.id%>">
+				<%=balance(@transfer.balance)%>
+			</li>
+		</ul>
+	</div>
+</div>
+<br/>
+<ul class="nav nav-tabs">
+	<li class="active"><a href="#effortPayments" data-toggle="tab">Pagamentos</a></li>
+	<li><a href="#devolutions" data-toggle="tab">Devoluções</a></li>
+</ul>
+
+
+<div class="tab-content">
+<div class="tab-pane active" id="effortPayments">
+	<%=render(:partial => 'efforts_payments', :locals => {:transfer => @transfer} )%>
+</div>
+<div class="tab-pane" id="devolutions">
+	devoluções
+</div>
+</div>

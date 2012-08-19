@@ -1,0 +1,12 @@
+<% if @effort_transfer.errors.any? %>
+	<%= render :partial => 'form' %>
+<% else %>
+	$('#divNovoEmpenho').modal('hide');
+	$('#divNovoEmpenho').empty();
+	$('#efforts').append("<%= escape_javascript(render(:partial => 'item_effort', :locals => {:effort => @effort_transfer} )) %>");
+	$('#transfer_balance_<%=@transfer.id%>').html("<%=balance(@transfer.balance)%>");
+	$('html, body').animate({
+    	scrollTop: $("#effort_<%=@effort_transfer.id%>").offset().top
+	}, 2000);
+	
+<% end %>

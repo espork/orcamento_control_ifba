@@ -1,23 +1,22 @@
 #encoding: utf-8
-module TransfersHelper
+module PaymentTransfersHelper
+  
   
   def attribute_pt(name)
       
       attr = name.to_s
       case attr
       when "value"
-        attr = "Valor"
+        attr = "O valor"
       when "identification"
-        attr = "Número"
+        attr = "O Número"
       when "date"
-        attr = "Data"
-      when "unit_id"
-        attr = "Campus"
+        attr = "A Data"
       end
-      
     
      attr
     
   end
+  
   
 end

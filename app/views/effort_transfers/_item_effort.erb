@@ -1,0 +1,35 @@
+<div class="row-fluid" id="effort_<%=effort.id%>">
+<div class="well span5">
+	
+	<%=link_to content_tag(:i,nil,:class=>"icon-remove"),resource_transfer_effort_transfer_path(effort.transfer.resource,effort.transfer,effort),:class=>"close",:remote=>true,:method=> :delete,:confirm => 'Tem certeza que deseja remover o empenho selecionado ?'%>
+	<h3>Empenho <%=effort.identification%></h3>
+	<p>Data : <%=effort.date.strftime("%d/%m/%Y")%></p>
+	<p>Valor : <%=real_format(effort.value)%></p>
+	<p id="balance_<%=effort.id%>">
+		<%=balance(effort.balance)%>
+	</p>
+	<p>
+		<%= link_to new_resource_transfer_effort_transfer_payment_transfer_path(effort.transfer.resource,effort.transfer,effort), :title => "Novo Pagamento",:class => "btn btn-success",:remote => true do %>
+			<i class="icon-plus"></i>&nbsp;Pagamento
+		<% end %>
+	</p>
+</div>
+
+<div class="well span7">
+	
+		<%if effort.payment_transfers.empty?%>
+		<h4>Pagamentos</h4>
+		<br/>
+		<div id="payments_<%=effort.id%>">
+			<p>Não há pagamentos registrados para este empenho.</p>
+			
+		</div>
+	<%else%>
+		<h4>Pagamentos</h4>
+		<br/>
+		<div id="payments_<%=effort.id%>">
+			<%=render(:partial => 'payment_transfers/payments_table', :locals => {:payments => effort.payment_transfers,:effort => effort} )%>
+		</div>
+	<%end%>
+</div>
+</div>

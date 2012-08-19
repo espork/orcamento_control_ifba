@@ -19,14 +19,14 @@
 			<td>
 				<ul>
 					<li class="icon-list-alt" title="Detalhes">
-						<a href="#" onclick="showPayment('<%=resource_effort_payment_path(effort.resource,effort,p) %>');"><i class="icon-list-alt"></i></a>
+						<a href="#" onclick="showPayment('<%=resource_transfer_effort_transfer_payment_transfer_path(effort.transfer.resource,effort.transfer,effort,p) %>');"><i class="icon-list-alt"></i></a>
 					</li>
 					
 					<li class="icon-edit" title="Editar">
-						<%=link_to content_tag(:i,nil,:class=>"icon-edit"),edit_resource_effort_payment_path(effort.resource,effort,p),:remote=>true%>
+						<%=link_to content_tag(:i,nil,:class=>"icon-edit"),edit_resource_transfer_effort_transfer_payment_transfer_path(effort.transfer.resource,effort.transfer,effort,p),:remote=>true%>
 					</li>
 					<li class="icon-remove" title="Excluir">
-						<%=link_to content_tag(:i,nil,:class=>"icon-remove"),resource_effort_payment_path(effort.resource,effort,p),:remote=>true,:method=> :delete,:confirm => 'Tem certeza que deseja remover o pagamento selecionado ?'%>
+						<%=link_to content_tag(:i,nil,:class=>"icon-remove"),resource_transfer_effort_transfer_payment_transfer_path(effort.transfer.resource,effort.transfer,effort,p),:remote=>true,:method=> :delete,:confirm => 'Tem certeza que deseja remover o pagamento selecionado ?'%>
 					</li>
 				</ul>
 			</td>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  date: 2012-08-17
+  obs: MyString
+  transfer_id: 1
+  value: 9.99
+  identification: MyString
+
+two:
+  date: 2012-08-17
+  obs: MyString
+  transfer_id: 1
+  value: 9.99
+  identification: MyString

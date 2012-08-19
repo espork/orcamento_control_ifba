@@ -1,5 +1,5 @@
 #encoding: utf-8
-module TransfersHelper
+module EffortTransfersHelper
   
   def attribute_pt(name)
       
@@ -11,10 +11,7 @@ module TransfersHelper
         attr = "Número"
       when "date"
         attr = "Data"
-      when "unit_id"
-        attr = "Campus"
       end
-      
     
      attr
     

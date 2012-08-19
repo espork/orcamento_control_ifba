@@ -9,6 +9,23 @@ class PaymentsController < ApplicationController
       format.js
     end
   end
+  
+  def update
+    
+    @payment = Payment.find(params[:id])
+    @payment.effort_id = params[:effort_id]
+    @effort = Effort.find(params[:effort_id])
+
+    respond_to do |format|
+      if @payment.update_attributes(params[:payment])
+        format.js
+        @payments = Payment.find_all_by_effort_id(params[:effort_id])
+      else
+        format.js
+      end
+    end
+  end
+
 
   def create
      @payment = Payment.new(params[:payment])
@@ -42,6 +59,14 @@ class PaymentsController < ApplicationController
     @payments = Payment.find_all_by_effort_id(params[:effort_id])
     respond_to do |format|
       format.js
+    end
+  end
+  
+  def show
+    @payment = Payment.find(params[:id])
+
+    respond_to do |format|
+      format.html {render :layout => false}
     end
   end
 

@@ -1,0 +1,90 @@
+<div class="modal-header">	
+	<button data-dismiss="modal" class="close" type="button">×</button>
+	<h3>Pagamento</h3>
+</div>
+
+<form class="form-horizontal" style="margin:0;">
+<div class="modal-body">
+	
+		<div class="control-group">
+			<label class="control-label">Empenho</label>
+			<div class="controls">
+				<span class="input uneditable-input span4"><%=@payment_transfer.effort_transfer.identification%></span>
+			</div>
+		</div>
+	
+	
+	
+	
+	<div class="control-group">
+		<label class="control-label">Número</label>
+		<div class="controls">
+			<span class="input uneditable-input span4"><%=@payment_transfer.identification%></span>
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label">Data</label>
+		<div class="controls">
+			<span class="input-small uneditable-input"><%=@payment_transfer.date.strftime("%d/%m/%Y")%></span>
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label">Valor</label>
+		<div class="controls">
+			<span class="input uneditable-input"><%=real_format(@payment_transfer.value)%></span>
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label">Número da nota fiscal</label>
+		<div class="controls">
+			<%if @payment_transfer.nf_number.nil? || @payment_transfer.nf_number.empty? %>
+				<span class="input uneditable-input">Não informado</span>
+			<%else%>
+				<span class="input uneditable-input"><%=@payment_transfer.nf_number%></span>
+			<%end%>
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label">Data da nota fiscal</label>
+		<div class="controls">
+			<%if @payment_transfer.nf_date.nil?%>
+				<span class="input uneditable-input">Não informado</span>
+			<%else%>
+				<span class="input-small uneditable-input"><%=@payment_transfer.nf_date.strftime("%d/%m/%Y")%></span>
+			<%end%>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label">Favorecido</label>
+		<div class="controls">
+			<%if @payment_transfer.favored.nil? || @payment_transfer.favored.empty?%>
+				<span class="input uneditable-input">Não informado</span>
+			<%else%>
+				<span class="input uneditable-input"><%=@payment_transfer.favored%></span>
+			<%end%>
+			
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label">Cpf/Cnpj</label>
+		<div class="controls">
+			
+			<%if @payment_transfer.identify.nil? || @payment_transfer.identify.empty?%>
+				<span class="input uneditable-input">Não informado</span>
+			<%else%>
+				<span class="input uneditable-input"><%=@payment_transfer.identify%></span>
+			<%end%>
+			
+		</div>
+	</div>
+	
+</div>
+
+<div class="modal-footer">
+	<a data-dismiss="modal" class="btn" href="#">Fechar</a>
+</div>		
+</form>

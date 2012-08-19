@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120811034000) do
+ActiveRecord::Schema.define(:version => 20120819000744) do
 
   create_table "budgets", :force => true do |t|
     t.string   "nc_number"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(:version => 20120811034000) do
     t.date     "end_date"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "effort_transfers", :force => true do |t|
+    t.date     "date"
+    t.string   "obs"
+    t.integer  "transfer_id"
+    t.decimal  "value",          :precision => 14, :scale => 2
+    t.string   "identification"
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
   end
 
   create_table "efforts", :force => true do |t|
@@ -40,6 +50,19 @@ ActiveRecord::Schema.define(:version => 20120811034000) do
     t.string   "pi"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "payment_transfers", :force => true do |t|
+    t.date     "date"
+    t.integer  "effort_transfer_id"
+    t.string   "favored"
+    t.string   "identify"
+    t.date     "nf_date"
+    t.string   "nf_number"
+    t.decimal  "value",              :precision => 14, :scale => 2
+    t.string   "identification"
+    t.datetime "created_at",                                        :null => false
+    t.datetime "updated_at",                                        :null => false
   end
 
   create_table "payments", :force => true do |t|

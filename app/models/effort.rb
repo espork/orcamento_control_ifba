@@ -12,17 +12,23 @@ class Effort < ActiveRecord::Base
   validates_numericality_of :value, :greater_than => 0,:message => " - deve ser maior que zero"
   validate :has_balance
   
-  def total_payments
+  def total_payments(payment_to_subtract = nil)
     total = 0
-    for payment in payments
-      total = total + payment.value
+    if(payment_to_subtract.nil?)
+      for payment in payments
+        total = total + payment.value
+      end
+    else
+      for payment in payments
+        total = total + payment.value if (payment_to_subtract.id != payment.id)
+      end
     end
     
     total
   end
   
-  def balance
-    value - self.total_payments 
+  def balance (payment_to_subtract = nil)
+    value - self.total_payments(payment_to_subtract) 
   end
   
   

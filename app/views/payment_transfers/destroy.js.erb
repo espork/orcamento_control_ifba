@@ -1,0 +1,7 @@
+$('#payments_<%=@effort.id%>').html("");
+$('#balance_<%=@effort.id%>').html("<%=balance(@effort.balance)%>")
+<%if @payments.empty?%>
+$('#payments_<%=@effort.id%>').html("<p>Não há pagamentos registrados para este empenho.</p>")
+<%else%>
+$('#payments_<%=@effort.id%>').html("<%= escape_javascript(render(:partial => 'payments_table', :locals => {:payments => @payments,:effort => @effort} )) %>");
+<%end%>

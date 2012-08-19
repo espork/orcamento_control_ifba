@@ -1,0 +1,11 @@
+<% if @payment_transfer.errors.any? %>
+	<%= render :partial => 'form' %>
+<% else %>
+	$('#divNovoPagamento').modal('hide');
+	$('#divNovoPagamento').empty();
+	
+	$('#payments_<%=@effort.id%>').html("");
+	$('#payments_<%=@effort.id%>').html("<%= escape_javascript(render(:partial => 'payments_table', :locals => {:payments => @payments,:effort => @effort} )) %>");
+	$('#balance_<%=@effort.id%>').html("<%=balance(@effort.balance)%>")
+	
+<% end %>

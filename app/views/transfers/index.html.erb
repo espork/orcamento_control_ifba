@@ -1,0 +1,54 @@
+<div class="span11">
+	<h3>Orçamento <%=@resource.budget.start_date.strftime("%d/%m/%Y")%> - <%=@resource.budget.end_date.strftime("%d/%m/%Y")%></h3>
+</div>
+<br/>
+<br/>
+<br/>
+
+
+<div class="span12">
+	<ul class="unstyled">
+		<li><strong>Sub Repasses </strong></li>
+	</ul>
+</div>
+<br/>
+<br/>
+
+<div class="span11">
+<table class="table table-striped" >
+  <tr>
+    <th>Natureza</th>
+	<th>NC</th>
+    <th>Valor</th>
+	<th>Gasto</th>
+	<th>Saldo</th>
+    <th>Opções</th>
+    
+  </tr>
+
+	<% @transfers.each do |t| %>
+  <tr>
+    <td><%= t.resource.nature.nd %></td>
+	<td><%= t.identification %></td>
+    <td><%= t.value%></td>
+	<td><%= ""%></td>
+	<td><%= ""%></td>
+	<td>
+		<ul>
+			
+			<li class="icon-edit" title="Editar">
+				
+			</li>
+			
+			<li class="icon-edit" title="Detalhes">
+				<%=link_to content_tag(:i,nil,:class=>"icon-edit"),[t.resource,t]%>
+			</li>
+		</ul>
+	</td>
+  </tr>
+	<%end%>
+</table>
+
+<br />
+
+</div>

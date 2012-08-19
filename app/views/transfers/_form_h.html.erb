@@ -2,13 +2,13 @@
 	
 jQuery(function($) {
 	
-    $('#effort_date').datepicker({
+    $('#transfer_date').datepicker({
       yearRange     : 'c-0:c+10',
       showButtonPanel  : false,
       numberOfMonths  : 1,
       stepMonths    : 1,
 	  dateFormat : 'dd/mm/yy',
-      dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+	  dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
       monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
       hideIfNoPrevNext: true
     });
@@ -19,24 +19,33 @@ jQuery(function($) {
 
 <div class="modal-header">	
 	<button data-dismiss="modal" class="close" type="button">×</button>
-	<h3>Novo Empenho</h3>
+	<h3>Sub Repasse</h3>
 </div>
 
-<%= form_for([@resource,@effort],:remote => true,:html =>{:class => "form-horizontal", :style => "margin:0"}) do |f| %>
+<%= form_for([@resource,@transfer],:remote => true,:html =>{:class => "form-horizontal", :style => "margin:0"}) do |f| %>
 <div class="modal-body">
 	
-	<% if @effort.errors.any? %>
+	
+	<% if @transfer.errors.any? %>
 			<div class="alert alert-error">
 				<a class="close" data-dismiss="alert" href="#">×</a>
 				<ul class="unstyled">
 					
-					<% @effort.errors.each do |attribute,msg| %>
+					<% @transfer.errors.each do |attribute,msg| %>
 						<li> <%=attribute_pt(attribute) + msg%></li>
 					<% end %>
 				</ul>
 			</div>
 			
 		<% end %>
+	
+	
+	<div class="control-group">
+		<%= f.label :unit_id,"Campus",:class=> "control-label" %>
+		<div class="controls">
+			<%= f.collection_select(:unit_id,Unit.order(:name),:id, :name, {:prompt => "Selecione um campus"}) %>
+		</div>
+	</div>
 	
 	<div class="control-group">
 		<%= f.label :identification,"Número",:class=> "control-label" %>

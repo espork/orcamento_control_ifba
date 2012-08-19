@@ -1,5 +1,22 @@
 class TransfersController < ApplicationController
   
+  def index
+    @resource = Resource.find(params[:resource_id])
+    @transfers = Transfer.find_all_by_unit_id(params[:unit_id])
+    
+  end
+  
+  def show
+    
+    @transfer = Transfer.find(params[:id])
+
+    respond_to do |format|
+      format.html
+    end
+
+  end
+
+  
    def create
      @transfer = Transfer.new(params[:transfer])
      @transfer.resource_id = params[:resource_id]
@@ -9,6 +26,7 @@ class TransfersController < ApplicationController
         @resource = Resource.find(params[:resource_id])
         format.js
       else
+        @resource = Resource.find(params[:resource_id])
         format.js
       end
     end

@@ -2,7 +2,7 @@
 	
 jQuery(function($) {
 	
-    $('#payment_date').datepicker({
+    $('#payment_transfer_date').datepicker({
       yearRange     : 'c-0:c+10',
       showButtonPanel  : false,
       numberOfMonths  : 1,
@@ -13,7 +13,7 @@ jQuery(function($) {
       hideIfNoPrevNext: true
     });
 	
-	$('#payment_nf_date').datepicker({
+	$('#payment_transfer_nf_date').datepicker({
       yearRange     : 'c-0:c+10',
       showButtonPanel  : false,
       numberOfMonths  : 1,
@@ -33,16 +33,16 @@ jQuery(function($) {
 	<h3>Pagamento</h3>
 </div>
 
-<%= form_for([@effort.resource,@effort,@payment],:remote => true,:html =>{:class => "form-horizontal", :style => "margin:0"}) do |f| %>
+<%= form_for([@effort.transfer.resource,@effort.transfer,@effort,@payment_transfer],:remote => true,:html =>{:class => "form-horizontal", :style => "margin:0"}) do |f| %>
 <div class="modal-body">
 	
 	
-	<% if @payment.errors.any? %>
+	<% if @payment_transfer.errors.any? %>
 		
 			<div class="alert alert-error">
 				<a class="close" data-dismiss="alert" href="#">×</a>
 				<ul class="unstyled">
-					<% @payment.errors.each do |attribute,msg| %>
+					<% @payment_transfer.errors.each do |attribute,msg| %>
 						<li> <%=attribute_pt(attribute) + msg%></li>
 					<% end %>
 				</ul>

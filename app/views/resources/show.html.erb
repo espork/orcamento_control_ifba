@@ -1,3 +1,14 @@
+<%=  javascript_tag  do%>
+
+	function showPayment(url){
+	
+		$('#divNovoPagamento').empty();
+		$("#divNovoPagamento").load(url);
+		$("#divNovoPagamento").modal();
+	}
+
+<%end%>
+
 <div class="row-fluid">
 	<div class="span10">
 		<h3>Orçamento <%=@resource.budget.start_date.strftime("%d/%m/%Y")%> - <%=@resource.budget.end_date.strftime("%d/%m/%Y")%></h3>
@@ -18,7 +29,7 @@
 <br/>
 <ul class="nav nav-tabs">
 	<li class="active"><a href="#effortPayments" data-toggle="tab">Pagamentos</a></li>
-	<li><a href="#subTransfer" data-toggle="tab">Subrepasses</a></li>
+	<li><a href="#subTransfer" data-toggle="tab">Sub Repasses</a></li>
 </ul>
 
 

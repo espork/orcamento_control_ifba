@@ -2,13 +2,13 @@
 	
 jQuery(function($) {
 	
-    $('#effort_date').datepicker({
+    $('#effort_transfer_date').datepicker({
       yearRange     : 'c-0:c+10',
       showButtonPanel  : false,
       numberOfMonths  : 1,
       stepMonths    : 1,
 	  dateFormat : 'dd/mm/yy',
-      dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+	  dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
       monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
       hideIfNoPrevNext: true
     });
@@ -22,15 +22,15 @@ jQuery(function($) {
 	<h3>Novo Empenho</h3>
 </div>
 
-<%= form_for([@resource,@effort],:remote => true,:html =>{:class => "form-horizontal", :style => "margin:0"}) do |f| %>
+<%= form_for([@resource,@transfer,@effort_transfer],:remote => true,:html =>{:class => "form-horizontal", :style => "margin:0"}) do |f| %>
 <div class="modal-body">
 	
-	<% if @effort.errors.any? %>
+	<% if @effort_transfer.errors.any? %>
 			<div class="alert alert-error">
 				<a class="close" data-dismiss="alert" href="#">×</a>
 				<ul class="unstyled">
 					
-					<% @effort.errors.each do |attribute,msg| %>
+					<% @effort_transfer.errors.each do |attribute,msg| %>
 						<li> <%=attribute_pt(attribute) + msg%></li>
 					<% end %>
 				</ul>

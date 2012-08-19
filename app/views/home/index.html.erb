@@ -1,3 +1,13 @@
+<%=  javascript_tag  do%>
+
+	function showDetail(url){
+		$("#divDetail").load(url);
+		$("#divDetail").modal();
+	}
+
+<%end%>
+
+
 <div class="span11">
 	<h3>Orçamento <%=@budget.start_date.strftime("%d/%m/%Y")%> - <%=@budget.end_date.strftime("%d/%m/%Y")%></h3>
 </div>
@@ -32,14 +42,14 @@
 	<% @budget.resources.each do |r| %>
   <tr>
     <td><%= r.nature.nd %></td>
-    <td><%= r.value%></td>
-	<td><%= ""%></td>
-	<td><%= ""%></td>
+    <td><%= real_format(r.value)%></td>
+	<td><%= real_format(r.total_spending)%></td>
+	<td><%= real_format(r.balance)%></td>
 	<td>
 		<ul>
 			
-			<li class="icon-edit" title="Editar">
-				<%=link_to content_tag(:i,nil,:class=>"icon-edit"),edit_budget_path(@budget)%>
+			<li class="icon-list-alt" title="Resumo">
+				<a href="#" onclick="showDetail('<%=resource_detail_path(r)%>');"><i class="icon-list-alt"></i></a>
 			</li>
 			
 			<li class="icon-edit" title="Detalhes">
@@ -52,5 +62,5 @@
 </table>
 
 <br />
-
+<div id='divDetail' class="modal hide fade in"></div>
 </div>
