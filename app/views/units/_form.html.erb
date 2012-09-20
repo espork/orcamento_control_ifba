@@ -3,9 +3,9 @@
 	<% if @unit.errors.any? %>
 		<div class="alert alert-error">
 			<a class="close" data-dismiss="alert" href="#">×</a>
-			<ul>
-				<% @unit.errors.full_messages.each do |msg| %>
-					<li><%=msg%></li>
+			<ul class="unstyled">
+				<% @unit.errors.each do |attribute,msg| %>
+						<li> <%=attribute_pt(attribute) + msg%></li>
 				<% end %>
 			</ul>
 		</div>  

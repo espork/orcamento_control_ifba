@@ -1,15 +1,15 @@
 <%= form_for(@nature,:html =>{:class => "well form-horizontal"}) do |f| %>
+  
   <% if @nature.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@nature.errors.count, "error") %> prohibited this nature from being saved:</h2>
-
-      <ul>
-      <% @nature.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+		<div class="alert alert-error">
+			<a class="close" data-dismiss="alert" href="#">×</a>
+			<ul class="unstyled">
+				<% @nature.errors.full_messages.each.each do |msg| %>
+						<li> <%=msg%></li>
+				<% end %>
+			</ul>
+		</div>  
+	<% end %>
   
   
   <div class="control-group">

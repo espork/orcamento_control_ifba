@@ -18,24 +18,24 @@
 				</a>
 				
 				<div class="nav-collapse">
-
+					<%if user_signed_in?%>	
 					<ul class="nav pull-right">
 						<li class="dropdown">
 	 
 							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-								
-								email<b class="caret"></b></a>
+								<%=current_user.email%><b class="caret"></b>
+							</a>
 							<ul class="dropdown-menu">
-
-								<li><i class="icon-user"></i> Minha Conta</li>
-								<li class="divider"></li>
 								<li>
+									<%= link_to destroy_user_session_path,:method => :delete do %>
 										<i class="icon-off"></i> Sair 
+									<% end %> 
 								</li>
 								
 							</ul>
 						</li>
 					</ul>
+					<%end%>
 				</div>
 			</div>
 		</div>

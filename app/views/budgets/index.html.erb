@@ -26,9 +26,9 @@
 <% @budgets.each do |budget| %>
   <tr>
     <td><%= budget.nc_number %></td>
-    <td><%= budget.total%></td>
-	<td><%= budget.start_date%></td>
-	<td><%= budget.end_date%></td>
+    <td><%= real_format(budget.total)%></td>
+	<td><%= budget.start_date.strftime("%d/%m/%Y")%></td>
+	<td><%= budget.end_date.strftime("%d/%m/%Y")%></td>
 	<td>
 		<ul>
 			

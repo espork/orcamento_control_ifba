@@ -1,0 +1,40 @@
+<h3>Novo Usuário</h3>
+
+<%= form_for(resource,:html =>{:class => "well form-horizontal"}, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+	<div class="control-group">
+		<%= f.label :email,"Email", :class => "control-label" %>
+		<div class="controls">
+			<%= f.email_field :email %>
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<%= f.label :unit_id,"Campus", :class => "control-label" %>
+		<div class="controls">
+			<%= f.collection_select(:unit_id,Unit.order(:name),:id, :name, {:prompt => "Reitoria"}) %>
+		</div>
+	</div>
+	
+	
+	<div class="control-group">
+		<%= f.label :password,"Senha", :class => "control-label" %>
+		<div class="controls">
+			<%= f.password_field :password %>
+		</div>
+	</div>	
+	
+	<div class="control-group">
+		<%= f.label :password_confirmation,"Confirmar Senha", :class => "control-label" %>
+		<div class="controls">
+			<%= f.password_field :password_confirmation %>
+		</div>
+	</div>	
+  
+  <div class="form-actions">
+		<%= f.submit "Registrar",:class => "btn btn-primary" %>
+	</div>
+<% end %>
+
+<%= render "devise/shared/links" %>

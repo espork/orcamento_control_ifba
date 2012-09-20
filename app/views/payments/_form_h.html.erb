@@ -2,6 +2,7 @@
 	
 jQuery(function($) {
 	
+	$('#payment_value').maskMoney({decimal:",",thousands:"."});
     $('#payment_date').datepicker({
       yearRange     : 'c-0:c+10',
       showButtonPanel  : false,
@@ -78,7 +79,7 @@ jQuery(function($) {
 	<div class="control-group">
 		<%= f.label :value,"valor",:class=> "control-label" %>
 		<div class="controls">
-			<%= f.text_field :value%>
+			<%= f.text_field :value, :value=>real_format(@payment.value)%>
 		</div>
 	</div>
 	

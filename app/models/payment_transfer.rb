@@ -10,6 +10,11 @@ class PaymentTransfer < ActiveRecord::Base
   validates_numericality_of :value, :greater_than => 0,:message => " deve ser maior que zero"
   validate :has_balance
   
+  
+  def value=(_value)
+    self[:value]=  _value.sub(".","").sub(",",".")
+  end
+  
   private 
   def has_balance
     

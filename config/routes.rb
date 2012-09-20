@@ -1,5 +1,7 @@
 OrcamentoControlIfba::Application.routes.draw do
 
+  devise_for :users
+
   resources :resources do
     
     get :detail, :to => "resources#detail"
