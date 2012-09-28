@@ -1,0 +1,22 @@
+	<div class="row-fluid">
+		<div class="span10">
+			
+			<%= link_to new_resource_devolution_path(resource), :title => "Nova Devolução",:class => "btn",:remote => true do %>
+					<i class="icon-plus"></i>&nbspNova Devolução
+			<% end %>
+		</div>
+	</div>
+	<br/>
+	<br/>
+	<div id='divNovaDevolucao' class="modal hide fade in"></div>
+	
+	
+	<div class="row-fluid">
+		<div class="span10">
+			<div id="devolutions">
+				<% resource.devolutions.each do |devolution| %>
+					<%=render(:partial => 'devolutions/item_devolution', :locals => {:devolution => devolution} )%>
+				<%end%>
+			</div>
+		</div>
+	</div>

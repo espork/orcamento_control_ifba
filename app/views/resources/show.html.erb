@@ -30,6 +30,7 @@
 <ul class="nav nav-tabs">
 	<li class="active"><a href="#effortPayments" data-toggle="tab">Pagamentos</a></li>
 	<li><a href="#subTransfer" data-toggle="tab">Sub Repasses</a></li>
+	<li><a href="#devolutions" data-toggle="tab">Devoluções</a></li>
 </ul>
 
 
@@ -39,5 +40,9 @@
 </div>
 <div class="tab-pane" id="subTransfer">
 	<%=render(:partial => 'sub_transfer', :locals => {:resource => @resource} )%>
+</div>
+
+<div class="tab-pane" id="devolutions">
+	<%=render(:partial => 'devolutions', :locals => {:resource => @resource} )%>
 </div>
 </div>

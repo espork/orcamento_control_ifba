@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120920004013) do
+ActiveRecord::Schema.define(:version => 20120928003934) do
 
   create_table "budgets", :force => true do |t|
     t.string   "nc_number"
@@ -19,6 +19,24 @@ ActiveRecord::Schema.define(:version => 20120920004013) do
     t.date     "end_date"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "devolution_transfers", :force => true do |t|
+    t.decimal  "value",          :precision => 14, :scale => 2
+    t.integer  "transfer_id"
+    t.string   "identification"
+    t.date     "date"
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
+  end
+
+  create_table "devolutions", :force => true do |t|
+    t.decimal  "value",          :precision => 14, :scale => 2
+    t.integer  "resource_id"
+    t.string   "identification"
+    t.date     "date"
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
   end
 
   create_table "effort_transfers", :force => true do |t|

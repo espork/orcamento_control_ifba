@@ -1,0 +1,13 @@
+<% if @devolution_transfer.errors.any? %>
+	<%= render :partial => 'form' %>
+<% else %>
+	$('#divNovaDevolucao').modal('hide');
+	$('#divNovaDevolucao').empty();
+	
+	$('#devolutions').append("<%= escape_javascript(render(:partial => 'item_devolution', :locals => {:devolution => @devolution_transfer} )) %>");
+	$('#transfer_balance_<%=@transfer.id%>').html("<%=balance(@transfer.balance)%>");
+	$('html, body').animate({
+    	scrollTop: $("#devolution_<%=@devolution_transfer.id%>").offset().top
+	}, 2000);
+	
+<% end %>

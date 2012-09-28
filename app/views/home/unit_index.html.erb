@@ -1,0 +1,53 @@
+<div class="span11">
+	<h3>Orçamento <%=@budget.start_date.strftime("%d/%m/%Y")%> - <%=@budget.end_date.strftime("%d/%m/%Y")%></h3>
+</div>
+<br/>
+<br/>
+<br/>
+
+
+<div class="span12">
+	<ul class="unstyled">
+		<li><strong>Número da NC : </strong><%=@budget.nc_number%></li>
+		<li><strong>Valor : </strong><%=real_format(@budget.total)%></li>
+	</ul>
+</div>
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+<div class="span11">
+	<strong><p>Sub Repasses</p></strong>
+<table class="table table-striped" >
+  <tr>
+    <th>Natureza</th>
+	<th>Número</th>
+    <th>Valor</th>
+	<th>Data</th>
+    <th>Opções</th>
+    
+  </tr>
+
+	<% @transfers.each do |t| %>
+  <tr>
+    <td><%= t.resource.nature.nd %></td>
+	<td><%= t.identification %></td>
+    <td><%= real_format(t.value)%></td>
+	<td><%= t.date.strftime("%d/%m/%Y")%></td>
+	<td>
+		<ul>
+			
+			<li class="icon-edit" title="Detalhes">
+				<%=link_to content_tag(:i,nil,:class=>"icon-edit"), resource_transfer_path(t.resource,t)%>
+			</li>
+		</ul>
+	</td>
+  </tr>
+	<%end%>
+</table>
+
+<br />
+<div id='divDetail' class="modal hide fade in"></div>
+</div>

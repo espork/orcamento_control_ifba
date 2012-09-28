@@ -16,7 +16,16 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				
+				<%if user_signed_in?%>
+				<a class="brand" href="/">
+					Sua unidade é <%= if current_user.unit.nil?
+										"Reitoria"
+									  else
+										current_user.unit.name
+									  end
+								   %>
+				</a>
+				<%end%>
 				<div class="nav-collapse">
 					<%if user_signed_in?%>	
 					<ul class="nav pull-right">

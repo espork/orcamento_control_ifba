@@ -4,6 +4,7 @@ class Resource < ActiveRecord::Base
   belongs_to :nature
   has_many :efforts
   has_many :transfers
+  has_many :devolutions
   
   
   
@@ -34,12 +35,21 @@ class Resource < ActiveRecord::Base
     total
   end
   
+  def total_devolutions
+    total = 0
+    for devolution in devolutions
+      total = total + devolution.value
+    end
+    
+    total
+  end
+  
   def total_spending
     self.total_efforts + self.total_transfers
   end
   
   def balance
-    value - self.total_efforts - self.total_transfers 
+    value - self.total_efforts - self.total_transfers - self.total_devolutions
   end
   
 end

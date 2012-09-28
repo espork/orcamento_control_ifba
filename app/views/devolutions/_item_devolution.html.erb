@@ -1,0 +1,11 @@
+<div class="row-fluid" id="devolution_<%=devolution.id%>">
+	
+<div class="well span12">
+	
+	<%=link_to content_tag(:i,nil,:class=>"icon-remove"),resource_devolution_path(devolution.resource,devolution),:class=>"close",:remote=>true,:method=> :delete,:confirm => 'Tem certeza que deseja remover a devolução selecionada ?'%>
+	<h3>Devolução <%=devolution.identification%></h3>
+	<p>Data : <%=devolution.date.strftime("%d/%m/%Y")%></p>
+	<p>Valor : <%=real_format(devolution.value)%></p>
+</div>
+
+</div>

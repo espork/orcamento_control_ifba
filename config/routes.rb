@@ -6,7 +6,12 @@ OrcamentoControlIfba::Application.routes.draw do
     
     get :detail, :to => "resources#detail"
     
+    resources :devolutions
+    
     resources :transfers do
+      
+      resources :devolution_transfers
+      
       resources :effort_transfers do
         resources :payment_transfers
       end
