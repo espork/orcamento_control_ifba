@@ -7,6 +7,8 @@
 	<p>Campus : <%=transfer.unit.name%></p>
 	<p>Data : <%=transfer.date.strftime("%d/%m/%Y")%></p>
 	<p>Valor : <%=real_format(transfer.value)%></p>
+	<p>Devolvido : <%=real_format(transfer.total_devolutions)%></p>
+	
 	<p>
 		<%= link_to resource_transfer_path(transfer.resource,transfer), :title => "Detalhes",:class => "btn btn-success" do %>
 			<i class="icon-plus"></i>&nbsp;Detalhes

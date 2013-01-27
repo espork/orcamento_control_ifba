@@ -26,8 +26,17 @@ class Transfer < ActiveRecord::Base
     total
   end
   
+  def total_devolutions
+    total = 0
+    for devolution in devolution_transfers
+      total = total + devolution.value
+    end
+    
+    total
+  end
+  
    def balance
-    value - self.total_efforts 
+    value - self.total_efforts - self.total_devolutions 
   end
   
   private 
