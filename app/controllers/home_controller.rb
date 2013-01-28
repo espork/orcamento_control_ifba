@@ -6,7 +6,7 @@ class HomeController < ApplicationController
     
     @budget = Budget.find_by_end_date(Budget.maximum(:end_date))
     
-    if current_user.unit 
+    if current_user.unit && !@budget.nil? 
       @transfers = Transfer.joins(:resource).where("resources.budget_id =:budget_id and unit_id = :unit_id",{:budget_id=>@budget.id,:unit_id=>current_user.unit.id})
       render :action => "unit_index"
     end
@@ -14,9 +14,5 @@ class HomeController < ApplicationController
     
   end
   
-  
-  def unit_index
-    @transfers = Transfer.all
-  end
   
 end

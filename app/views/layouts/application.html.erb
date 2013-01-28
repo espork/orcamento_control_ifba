@@ -67,24 +67,30 @@
 
 		<div class="row-fluid">
 			<div class="span2">
-					<a class="brand" href="/"><img src="/assets/logo-ifbaiano.png" style="size:164x164" class="thumbnail"></a>
-					<br/>
-				<ul class="nav nav-list">
-					<li class="nav-header ">
-						Cadastros
-					</li>
-					<li  class="<%= 'active' if params[:controller] == 'units' %>">
-						<%= link_to "Unidades", units_path %>
-					</li>
-					<li class="<%= 'active' if (params[:controller] == 'natures')  %>">
-						<%= link_to "Naturezas", natures_path %>
-					</li>
-					
-					<li class="<%= 'active' if (params[:controller] == 'budgets')  %>">
-						<%= link_to "Orçamento", budgets_path %>
-					</li>
-					
-				</ul>
+				
+				<a class="brand" href="/"><img src="/assets/logo-ifbaiano.png" style="size:164x164" class="thumbnail"></a>
+				
+				<br/>
+				
+				<%if user_signed_in? && current_user.unit.nil?%>
+					<ul class="nav nav-list">
+						<li class="nav-header ">
+							Cadastros
+						</li>
+						<li  class="<%= 'active' if params[:controller] == 'units' %>">
+							<%= link_to "Unidades", units_path %>
+						</li>
+						<li class="<%= 'active' if (params[:controller] == 'natures')  %>">
+							<%= link_to "Naturezas", natures_path %>
+						</li>
+						
+						<li class="<%= 'active' if (params[:controller] == 'budgets')  %>">
+							<%= link_to "Orçamento", budgets_path %>
+						</li>
+						
+					</ul>
+				<%end%>
+				
 			</div>
 			<div class="span10" >
 				<div class="well" style="min-height:500px; border:1px solid #DDD; background-color:white;overflow:auto;">

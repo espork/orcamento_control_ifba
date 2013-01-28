@@ -1,66 +1,23 @@
-<%=  javascript_tag  do%>
-
-	function showDetail(url){
-		$("#divDetail").load(url);
-		$("#divDetail").modal();
-	}
-
-<%end%>
-
-
-<div class="span11">
-	<h3>Orçamento <%=@budget.start_date.strftime("%d/%m/%Y")%> - <%=@budget.end_date.strftime("%d/%m/%Y")%></h3>
-</div>
-<br/>
-<br/>
-<br/>
-
-
-<div class="span12">
-	<ul class="unstyled">
-		<li><strong>Número da NC : </strong><%=@budget.nc_number%></li>
-		<li><strong>Valor : </strong><%=real_format(@budget.total)%></li>
-	</ul>
-</div>
-
-<br/>
-<br/>
-<br/>
-<br/>
-
-<div class="span11">
-<table class="table table-striped" >
-  <tr>
-    <th>Natureza</th>
-    <th>Valor</th>
-	<th>Gasto</th>
-	<th>Saldo</th>
-    <th>Opções</th>
-    
-  </tr>
-
-	<% @budget.resources.each do |r| %>
-  <tr>
-    <td><%= r.nature.nd %></td>
-    <td><%= real_format(r.value)%></td>
-	<td><%= real_format(r.total_spending)%></td>
-	<td><%= real_format(r.balance)%></td>
-	<td>
-		<ul>
+<div class="hero-unit">
+            <h1>Bem Vindo, <%= current_user.name%></h1>
+            <p>Esse é o sistema de controle de orçamento do IFBA. Nele será possível gerenciar empenhos, pagamentos, sub-repasses e devoluções.</p>
 			
-			<li class="icon-list-alt" title="Resumo">
-				<a href="#" onclick="showDetail('<%=resource_detail_path(r)%>');"><i class="icon-list-alt"></i></a>
-			</li>
+			<%if current_user.unit.nil? %>
+				<%if @budget.nil?%>
+					<p>Não existem orçamentos no sistema &nbsp;&nbsp; <%= link_to 'crie agora', new_budget_path,:class=>'btn btn-primary btn-large' %></p>
+				<%else%>
+					<p><%= link_to 'clique aqui' ,rectory_index_home_index_path,:class=>'btn btn-primary btn-large' %> para começar! </p>
+				<%end%>
+			<%end%>
 			
-			<li class="icon-edit" title="Detalhes">
-				<%=link_to content_tag(:i,nil,:class=>"icon-edit"),r%>
-			</li>
-		</ul>
-	</td>
-  </tr>
-	<%end%>
-</table>
-
-<br />
-<div id='divDetail' class="modal hide fade in"></div>
-</div>
+			<%if current_user.unit%>
+			
+				<%if @transfers.nil?%>
+					<p>Ainda não existem sub-repasses para a sua unidade.</p>
+				<%else%>
+					<p>Existem <%=@transfers.lenght%> sub-repasses para a sua unidade, <%= link_to 'clique aqui' ,unit_index_home_index_path %> para começar. </p>
+				<%end%>
+				
+			<%end%>
+            
+          </div>
