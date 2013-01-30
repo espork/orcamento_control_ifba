@@ -1,9 +1,8 @@
 module ApplicationHelper
   
   def real_format(value)
-    aux = number_with_precision(value, :precision => 2)
     
-    final = number_with_delimiter(aux, :delimiter => ".",:separator => ",")
+    final = number_with_precision(value, :precision => 2, :separator => ',', :delimiter => '.')
     
     final
   end

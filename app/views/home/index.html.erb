@@ -12,10 +12,10 @@
 			
 			<%if current_user.unit%>
 			
-				<%if @transfers.nil?%>
+				<%if @transfers.size == 0 %>
 					<p>Ainda não existem sub-repasses para a sua unidade.</p>
 				<%else%>
-					<p>Existem <%=@transfers.lenght%> sub-repasses para a sua unidade, <%= link_to 'clique aqui' ,unit_index_home_index_path %> para começar. </p>
+					<p>Existem <%=@transfers.size%> sub-repasses para a sua unidade, <%= link_to 'clique aqui' ,unit_index_home_index_path %> para começar. </p>
 				<%end%>
 				
 			<%end%>

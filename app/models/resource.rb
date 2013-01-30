@@ -44,12 +44,21 @@ class Resource < ActiveRecord::Base
     total
   end
   
+  def total_devolutions_transfers
+    total = 0
+    for transfer in transfers
+      total = total + transfer.total_devolutions
+    end
+    
+    total
+  end
+  
   def total_spending
     self.total_efforts + self.total_transfers
   end
   
   def balance
-    value - self.total_efforts - self.total_transfers - self.total_devolutions
+    value - self.total_efforts - self.total_transfers - self.total_devolutions + self.total_devolutions_transfers
   end
   
 end

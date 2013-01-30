@@ -37,13 +37,13 @@
 			    <td><%= t.identification %></td>
 			    <td><%= t.unit.name%></td>
 				<td><%= real_format(t.value)%></td>
-				<td><%= real_format(0)%></td>
+				<td><%= real_format(t.total_devolutions)%></td>
 			  </tr>
 			<%end%>
 			<tr>
 				<td colspan="2"><strong>Total</strong></td>
 				<td><%= real_format(@resource.total_transfers)%></td>
-				<td><%= real_format(0)%></td>
+				<td><%= real_format(@resource.total_devolutions_transfers)%></td>
 			</tr>
 
 			
