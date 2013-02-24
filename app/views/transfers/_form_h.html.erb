@@ -33,7 +33,7 @@ jQuery(function($) {
 				<ul class="unstyled">
 					
 					<% @transfer.errors.each do |attribute,msg| %>
-						<li> <%=attribute_pt(attribute) + msg%></li>
+						<li> <%=transfer_pt(attribute) + msg%></li>
 					<% end %>
 				</ul>
 			</div>

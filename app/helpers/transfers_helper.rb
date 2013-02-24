@@ -1,7 +1,7 @@
 #encoding: utf-8
 module TransfersHelper
   
-  def attribute_pt(name)
+  def transfer_pt(name)
       
       attr = name.to_s
       case attr

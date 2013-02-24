@@ -44,7 +44,7 @@ jQuery(function($) {
 				<a class="close" data-dismiss="alert" href="#">×</a>
 				<ul class="unstyled">
 					<% @payment.errors.each do |attribute,msg| %>
-						<li> <%=attribute_pt(attribute) + msg%></li>
+						<li> <%=payment_pt(attribute) + msg%></li>
 					<% end %>
 				</ul>
 			</div>

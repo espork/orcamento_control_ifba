@@ -1,7 +1,7 @@
 #encoding: utf-8
 module DevolutionsHelper
   
-  def attribute_pt(name)
+  def devolution_pt(name)
       
       attr = name.to_s
       case attr

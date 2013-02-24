@@ -28,17 +28,22 @@
 
 
 <%= nested_form_for(@budget,:html =>{:class => "well form-horizontal"}) do |f| %>
+  
+  
   <% if @budget.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@budget.errors.count, "error") %> prohibited this budget from being saved:</h2>
-
-      <ul>
-      <% @budget.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+		<div class="alert alert-error">
+			<a class="close" data-dismiss="alert" href="#">×</a>
+			<ul class="unstyled">
+				<% @budget.errors.each do |attribute,msg| %>
+						<li> <%=translate_bg_attr(attribute) + msg%></li>
+				<% end %>
+			</ul>
+		</div>  
+	<% end %>
+  
+  
+  
+  
   
   <div class="control-group">
     <%= f.label :nc_number,"Nº da NC", :class => "control-label" %>
