@@ -1,7 +1,7 @@
 #encoding: utf-8
 module EffortTransfersHelper
   
-  def attribute_pt(name)
+  def effort_transfer_pt(name)
       
       attr = name.to_s
       case attr

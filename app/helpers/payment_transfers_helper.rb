@@ -2,7 +2,7 @@
 module PaymentTransfersHelper
   
   
-  def attribute_pt(name)
+  def payment_transfer_pt(name)
       
       attr = name.to_s
       case attr

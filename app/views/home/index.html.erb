@@ -1,7 +1,8 @@
 <div class="hero-unit">
-            <h1>Bem Vindo, <%= current_user.name%></h1>
-            <p>Esse é o sistema de controle de orçamento do IFBA. Nele será possível gerenciar empenhos, pagamentos, sub-repasses e devoluções.</p>
-			
+            <h1>Bem Vindo ao SAF</h1>
+			<br/>
+            <p>Sistema de acompanhamento financeiro do programa bolsa formação PRONATEC do IF BAIANO.</p>
+			<br/>
 			<%if current_user.unit.nil? %>
 				<%if @budget.nil?%>
 					<p>Não existem orçamentos no sistema &nbsp;&nbsp; <%= link_to 'crie agora', new_budget_path,:class=>'btn btn-primary btn-large' %></p>
