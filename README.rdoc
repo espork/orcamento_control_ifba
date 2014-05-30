@@ -1,6 +1,6 @@
 Payments Control
 
-saf.herokuaap.com
+saf.herokuapp.com
 
 usr : reitoria@gmail.com
 passwd : 123456
